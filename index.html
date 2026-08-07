@@ -149,26 +149,37 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
-    margin-top: 16px;
+    gap: 10px;
+    margin-top: 18px;
     margin-left: 0;
     padding-left: 0;
-    font-family:'Montserrat', sans-serif;
-    font-size: 12.5px;
-    color: var(--text-muted);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 14.5px;
+    line-height: 1.85;
+    color: var(--ink);
     width: fit-content;
+    max-width: 100%;
+  }
+  .contact-line{
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 8px;
+    line-height: 1.85;
   }
   .contact-links a{
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     width: fit-content;
     margin-left: 0;
     padding-left: 0;
     padding-right: 0;
     color: var(--ink);
     transition: color .2s ease;
-    line-height: 1;
+    line-height: 1.2;
+    white-space: nowrap;
   }
   .contact-links a i{
     display: inline-flex;
@@ -180,24 +191,24 @@
   .resume-btn{
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     margin-top: 0;
     margin-left: 0;
     padding: 0;
     border: none;
     background: transparent;
     color: var(--ink);
-    font-family:'Montserrat', sans-serif;
-    font-size: 12.5px;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 14.5px;
     font-weight: 400;
     letter-spacing: normal;
     text-transform: none;
     width: fit-content;
     flex-shrink: 0;
-    line-height: 1;
+    line-height: 1.2;
   }
   .resume-btn i{
-    font-size: 12.5px;
+    font-size: 13.5px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -205,8 +216,8 @@
     line-height: 1;
   }
   .resume-btn .label{
-    font-size: 12.5px;
-    line-height: 1;
+    font-size: 14.5px;
+    line-height: 1.2;
   }
   .resume-btn .label{
     font-style: italic;
@@ -379,9 +390,12 @@
     .hero-head h1{ gap:8px; flex-wrap:nowrap; overflow:hidden; }
     .hero-title-row{ gap:8px; }
     .hero-name{ font-size: clamp(20px, 4.2vw, 28px); white-space: nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .resume-btn{ margin-left: 6px; padding: 5px 8px; font-size: 9px; }
+    .resume-btn{ margin-left: 6px; padding: 5px 8px; font-size: 13px; }
     .hero-links{ gap:6px; flex-shrink:0; }
     .hero-links a{ width:22px; height:22px; font-size:10px; }
+    .contact-links{ font-size: 13.5px; line-height: 1.8; gap: 8px; }
+    .contact-line{ align-items: flex-start; row-gap: 4px; }
+    .contact-links a, .resume-btn{ font-size: 13.5px; }
     main{ padding-top: 76px; }
     section{ padding-top: 64px; }
     .eyebrow{ font-size: 22px; font-weight: 700; }
@@ -416,13 +430,13 @@
       and hands-on backend and ML project work. Focused on building practical, scalable solutions.
     </p>
     <div class="contact-links">
-      <div>
-        Contact me <a class="email-link" href="mailto:mohammedafaaz433@gmail.com"><i class="fa-solid fa-envelope"></i> <span class="label">email</span></a> |
-        look at my repos on <a class="github-link" href="https://github.com/mohammedafaaz" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> <span class="label">GitHub</span></a>
-      </div>
-      <div>
-        Check out my  <a class="resume-btn" href="Afaaz_Resume.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i> <span class="label">resume</span></a>
-      </div>
+      <p class="contact-line">
+        Contact me at <a class="email-link" href="mailto:mohammedafaaz433@gmail.com"><i class="fa-solid fa-envelope"></i> <span class="label">email</span></a>
+        | explore my <a class="github-link" href="https://github.com/mohammedafaaz" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> <span class="label">GitHub</span></a>.
+      </p>
+      <p class="contact-line">
+        Check out my <a class="resume-btn" href="Resume.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i> <span class="label">resume</span></a>.
+      </p>
     </div>
   </section>
 
@@ -460,6 +474,15 @@
       </div>
 
       <div class="card">
+        <div class="skillrow"><div class="k">Student Registration Form (Java Swing GUI Application)</div><div class="k">Jan 2026</div></div>
+        <div class="card-desc">Developed a desktop-based Student Registration Form using Java Swing, implementing GUI components, ActionListener, and event handling for interactive form submission. Designed input validation and structured data handling.</div>
+        <div class="card-foot">
+          <div class="stacktags"><span>Java</span><span>Swing</span><span>GUI</span></div>
+          <a class="gh" href="https://github.com/mohammedafaaz/Malaria-Cell-Detection-using-CNN.git" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <div class="card">
         <div class="skillrow"><div class="k">VeriPass — Bus Pass Verification</div><div class="k">May 2025</div></div>
         <div class="card-desc">Secure Flask web app verifying student bus passes via QR-based validation and real-time database logging.</div>
         <div class="card-foot">
@@ -470,7 +493,7 @@
 
     </div>
     <div class="projects-toggle-wrap" style="display:flex; justify-content:center;">
-      <button class="projects-toggle" id="projectsToggle" type="button" aria-expanded="false">View more</button>
+      <button class="projects-toggle" id="projectsToggle" type="button" aria-expanded="false">View more Projects</button>
     </div>
   </section>
 
