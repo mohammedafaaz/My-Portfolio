@@ -595,9 +595,9 @@
   }
 
   const saved = localStorage.getItem('theme');
-  setTheme(saved ? saved === 'white' : false);
+  setTheme(saved ? saved === 'dark' : false);
   toggles.forEach(function(btn){
-    if(btn) btn.addEventListener('click', function(){ setTheme(!root.classList.contains('white')); });
+    if(btn) btn.addEventListener('click', function(){ setTheme(!root.classList.contains('dark')); });
   });
 
   const mobileQuery = window.matchMedia('(max-width: 560px)');
