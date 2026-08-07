@@ -123,35 +123,19 @@
     flex-wrap: nowrap;
     min-width: 0;
   }
+  .hero-title-row{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
   .hero-name{
     display: inline-block;
     white-space: nowrap;
   }
   .hero-links{
-    display: inline-flex;
-    gap: 8px;
-    align-items: center;
-    flex-shrink: 0;
-  }
-  .hero-head h1 .hero-links a,
-  .hero-links a{
-    width: 24px;
-    height: 24px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    color: var(--ink);
-    background: var(--surface);
-    text-decoration: none;
-    transition: border-color .2s ease, color .2s ease, transform .2s ease;
-    font-size: 11px;
-  }
-  .hero-links a:hover{
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-1px);
+    display: none;
   }
   h1.name{ font-size: 40px; line-height:1.12; margin: 0; }
   .rule-orn{
@@ -161,6 +145,92 @@
   .rule-orn i{ font-size:5px; color: var(--accent); }
   .bio{ font-size:14.5px; line-height:1.85; color: var(--ink); max-width: 54ch; text-align: justify; }
   .bio em{ color: var(--accent); font-style: italic; }
+  .contact-links{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 16px;
+    margin-left: 0;
+    padding-left: 0;
+    font-family:'Montserrat', sans-serif;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    width: fit-content;
+  }
+  .contact-links a{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    color: var(--ink);
+    transition: color .2s ease;
+    line-height: 1;
+  }
+  .contact-links a i{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-links a:hover{ color: var(--accent); }
+  .resume-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--ink);
+    font-family:'Montserrat', sans-serif;
+    font-size: 12.5px;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: none;
+    width: fit-content;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .resume-btn i{
+    font-size: 12.5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .resume-btn .label{
+    font-size: 12.5px;
+    line-height: 1;
+  }
+  .resume-btn .label{
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 2px;
+  }
+  .resume-btn:hover{
+    color: var(--accent);
+  }
+  .resume-btn:hover .label{
+    text-decoration-thickness: 2px;
+  }
+  .contact-links .email-link .label,
+  .contact-links .github-link .label{
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 2px;
+  }
+  .contact-links .email-link:hover .label,
+  .contact-links .github-link:hover .label{
+    text-decoration-thickness: 2px;
+  }
 
   /* ---------- EXPERIENCE ---------- */
   .timeline{ position: relative; padding-left: 22px; }
@@ -179,17 +249,6 @@
   }
   .trow .what{ font-size:14.5px; }
   .trow .what span{ color: var(--ink-muted); font-size:13.5px; }
-
-  @media (max-width: 560px){
-    .trow .what{
-      display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 100%;
-    }
-    .trow .what span{ display: inline; }
-  }
 
   /* ---------- WORK ---------- */
   .work-list{ display:grid; grid-template-columns: 1fr 1fr; gap: 34px 32px; }
@@ -284,6 +343,7 @@
   .achrow:first-child{ padding-top:0; }
   .achrow:last-child{ border-bottom:none; padding-bottom:0; }
   .achrow .t{ font-family:'Montserrat', sans-serif; font-weight:400; font-size:13px; }
+  .achrow .t strong{ font-weight:700; }
   .achrow .y{
     font-family:'Montserrat', sans-serif; font-weight:400; font-size:11px; letter-spacing:.04em;
     color: var(--ink-muted); white-space:nowrap;
@@ -299,6 +359,7 @@
   .edurow:last-child{ border-bottom:none; padding-bottom:0; }
   .edurow .name{ font-family:'Montserrat', sans-serif; font-weight:400; font-size:13.5px; }
   .edurow .meta{ font-family:'Montserrat', sans-serif; font-weight:400; color: var(--ink-muted); font-size:12px; margin-top:4px; }
+  .edurow .meta strong{ font-weight:700; color: var(--ink); }
   .edurow .yr{
     font-family:'Montserrat', sans-serif; font-weight:400; font-size:11px; letter-spacing:.04em;
     color: var(--ink-muted); white-space:nowrap;
@@ -316,7 +377,9 @@
   @media (max-width: 640px){
     .hero-head{ align-items:center; gap:10px; flex-wrap:nowrap; }
     .hero-head h1{ gap:8px; flex-wrap:nowrap; overflow:hidden; }
+    .hero-title-row{ gap:8px; }
     .hero-name{ font-size: clamp(20px, 4.2vw, 28px); white-space: nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .resume-btn{ margin-left: 6px; padding: 5px 8px; font-size: 9px; }
     .hero-links{ gap:6px; flex-shrink:0; }
     .hero-links a{ width:22px; height:22px; font-size:10px; }
     main{ padding-top: 76px; }
@@ -337,7 +400,9 @@
     <div class="hero-head">
       <img src="afaazimg.png" alt="Mohammed Afaaz">
       <h1 class="name">
-        <span class="hero-name">Mohammed Afaaz</span>
+        <span class="hero-title-row">
+          <span class="hero-name">Mohammed Afaaz</span>
+        </span>
         <span class="hero-links">
           <a href="mailto:mohammedafaaz433@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
           <a href="https://github.com/mohammedafaaz" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
@@ -350,6 +415,12 @@
       <br>Proficient in <em>Python</em> and <em>Java</em>, with a strong foundation in Data Structures &amp; Algorithms
       and hands-on backend and ML project work. Focused on building practical, scalable solutions.
     </p>
+    <div class="contact-links">
+      <a class="email-link" href="mailto:mohammedafaaz433@gmail.com"><i class="fa-solid fa-envelope"></i> <span class="label">email</span>, connect or contact me here!</a>
+      <a class="github-link" href="https://github.com/mohammedafaaz" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i><span class="label">github</span>, check out my projects and repositories here!</a>
+      <a class="resume-btn" href="Afaaz_Resume.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i><span class="label">resume</span>
+      </a>
+    </div>
   </section>
 
   <!-- EXPERIENCE -->
@@ -390,7 +461,7 @@
         <div class="card-desc">Console-based hospital management system using Linked Lists in C for dynamic bed allocation and patient records.</div>
         <div class="card-foot">
           <div class="stacktags"><span>C</span><span>Linked Lists</span></div>
-          <a class="gh" href="https://github.com/mohammedafaaz" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          <a class="gh" href="https://github.com/mohammedafaaz/Hospital_Bed_Allocation_System_Using_Linked_List_with_C.git" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
         </div>
       </div>
 
@@ -399,7 +470,7 @@
         <div class="card-desc">ML-powered web app using Python and YOLOv8 for real-time pothole detection, severity classification, and GPS tracking. 2nd Runner-Up, SIH &amp; IGNITRON CodeRush 2025.</div>
         <div class="card-foot">
           <div class="stacktags"><span>Python</span><span>YOLOv8</span><span>Flask</span></div>
-          <a class="gh" href="https://github.com/mohammedafaaz" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          <a class="gh" href="https://github.com/mohammedafaaz/AI-Pothole-Detector-and-Reporter-WebApp.git" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
         </div>
       </div>
 
@@ -434,8 +505,9 @@
   <section id="achievements">
     <div class="eyebrow">Achievements</div>
     <div class="achlist">
-      <div class="achrow"><div class="t">2nd Runner-Up — SIH Internal Hackathon, BITM</div><div class="y">2025</div></div>
-      <div class="achrow"><div class="t">2nd Runner-Up — IGNITRON, GMU Davangere</div><div class="y">2025</div></div>
+      <div class="achrow"><div class="t"><strong>2nd Runner-Up</strong> — SIH Internal Hackathon, BITM</div><div class="y">2025</div></div>
+      <div class="achrow"><div class="t"><strong>2nd Runner-Up</strong> — IGNITRON, GMU Davangere</div><div class="y">2025</div></div>
+      <div class="achrow"><div class="t"><strong>5x</strong> Hackathon Participant</div><div class="y">2025</div></div>
     </div>
   </section>
 
@@ -443,9 +515,9 @@
   <section id="education">
     <div class="eyebrow">Education</div>
     <div class="edulist">
-      <div class="edurow"><div><div class="name">B.E. AI &amp; ML, BITM</div><div class="meta">CGPA: 8.6</div></div><div class="yr">2024 – 2028</div></div>
-      <div class="edurow"><div><div class="name">Nandi PU College, Ballari</div><div class="meta">94%</div></div><div class="yr">2022 – 2024</div></div>
-      <div class="edurow"><div><div class="name">Nandi State School, Ballari</div><div class="meta">92%</div></div><div class="yr">2022</div></div>
+      <div class="edurow"><div><div class="name">B.E. AI &amp; ML, BITM</div><div class="meta"><strong>CGPA: 8.6</strong></div></div><div class="yr">2024 – 2028</div></div>
+      <div class="edurow"><div><div class="name">Nandi PU College, Ballari</div><div class="meta"><strong>94%</strong></div></div><div class="yr">2022 – 2024</div></div>
+      <div class="edurow"><div><div class="name">Nandi State School, Ballari</div><div class="meta"><strong>92%</strong></div></div><div class="yr">2012 - 2022</div></div>
     </div>
   </section>
 
