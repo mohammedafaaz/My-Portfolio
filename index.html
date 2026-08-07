@@ -266,6 +266,8 @@
   .card{
     padding-top: 18px; border-top: 1px solid var(--border);
     display:flex; flex-direction:column; gap:9px;
+    transition: opacity .35s ease, filter .35s ease, max-height .35s ease, padding-top .35s ease, margin .35s ease, transform .35s ease, border-color .35s ease;
+    will-change: opacity, filter, max-height, transform;
   }
   .card-head{ display:flex; flex-direction:column; gap:4px; }
   .card-head .title{ font-family:'Montserrat', sans-serif; font-weight:600; font-size:14.5px; line-height:1.4; letter-spacing:0; }
@@ -290,7 +292,6 @@
     max-height: 148px;
     overflow: hidden;
     position: relative;
-    transition: opacity .25s ease, filter .25s ease;
   }
   .card.is-faded::before{
     content:'';
@@ -314,7 +315,17 @@
     pointer-events:none;
     z-index: 3;
   }
-  .card.is-hidden{ display:none; }
+  .card.is-hidden{
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    margin: 0;
+    border-top-color: transparent;
+    overflow: hidden;
+    pointer-events: none;
+    transform: translateY(8px);
+    visibility: hidden;
+  }
   .projects-toggle{
     margin-top: 18px;
     border: 1px solid var(--border);
@@ -432,9 +443,7 @@
     <div class="contact-links">
       <p class="contact-line">
         Contact me at <a class="email-link" href="mailto:mohammedafaaz433@gmail.com"><i class="fa-solid fa-envelope"></i> <span class="label">email</span></a>
-        | explore my <a class="github-link" href="https://github.com/mohammedafaaz" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> <span class="label">GitHub</span></a>.
-      </p>
-      <p class="contact-line">
+        | explore my <a class="github-link" href="https://github.com/mohammedafaaz" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> <span class="label">GitHub</span></a> | 
         Check out my <a class="resume-btn" href="Resume.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i> <span class="label">resume</span></a>.
       </p>
     </div>
@@ -556,17 +565,22 @@
 
   function updateProjects(){
     projectCards.forEach(function(card, index){
-      const shouldHide = index >= 4 && !showingAllProjects;
-      const shouldFade = !showingAllProjects && index >= 2 && index < 4;
-      card.classList.toggle('is-hidden', shouldHide);
-      card.classList.toggle('is-faded', shouldFade);
+      if (!isMobile) {
+        card.classList.remove('is-hidden', 'is-faded');
+        card.style.removeProperty('--preview-opacity');
+        card.style.removeProperty('--preview-grayscale');
+        return;
+      }
 
-      if(shouldFade){
-        const depth = index - 2 + 1;
-        const opacity = (0.92 - depth * 0.12).toFixed(2);
-        const grayscale = (0.02 + depth * 0.04).toFixed(2);
-        card.style.setProperty('--preview-opacity', opacity);
-        card.style.setProperty('--preview-grayscale', grayscale);
+      const isPreviewCard = !showingAllProjects && index === 2;
+      const shouldHide = !showingAllProjects && index >= 3;
+
+      card.classList.toggle('is-hidden', shouldHide);
+      card.classList.toggle('is-faded', isPreviewCard);
+
+      if (isPreviewCard) {
+        card.style.setProperty('--preview-opacity', '0.8');
+        card.style.setProperty('--preview-grayscale', '0.05');
       } else {
         card.style.removeProperty('--preview-opacity');
         card.style.removeProperty('--preview-grayscale');
@@ -574,9 +588,9 @@
     });
 
     if(projectsToggle){
-      projectsToggle.textContent = showingAllProjects ? 'View less' : 'View more';
+      projectsToggle.textContent = showingAllProjects ? 'View less Projects' : 'View more Projects';
       projectsToggle.setAttribute('aria-expanded', String(showingAllProjects));
-      projectsToggle.style.display = projectCards.length > 4 ? 'inline-flex' : 'none';
+      projectsToggle.style.display = isMobile && projectCards.length > 2 ? 'inline-flex' : 'none';
     }
   }
 
@@ -588,40 +602,6 @@
 
   const mobileQuery = window.matchMedia('(max-width: 560px)');
   let isMobile = mobileQuery.matches;
-
-  function updateProjects(){
-    projectCards.forEach(function(card, index){
-      if (!isMobile) {
-        card.classList.remove('is-hidden', 'is-faded');
-        card.style.removeProperty('--preview-opacity');
-        card.style.removeProperty('--preview-grayscale');
-        return;
-      }
-
-      const shouldHide = index >= 2 && !showingAllProjects;
-      const shouldFade = !showingAllProjects && index === 2;
-      card.classList.toggle('is-hidden', shouldHide);
-      card.classList.toggle('is-faded', shouldFade);
-
-      if(shouldFade){
-        card.style.setProperty('--preview-opacity', '0.8');
-        card.style.setProperty('--preview-grayscale', '0.05');
-      } else {
-        card.style.removeProperty('--preview-opacity');
-        card.style.removeProperty('--preview-grayscale');
-      }
-    });
-
-    if(projectsToggle){
-      if (!isMobile || projectCards.length <= 2) {
-        projectsToggle.style.display = 'none';
-      } else {
-        projectsToggle.style.display = 'inline-flex';
-        projectsToggle.textContent = showingAllProjects ? 'View less' : 'View more';
-        projectsToggle.setAttribute('aria-expanded', String(showingAllProjects));
-      }
-    }
-  }
 
   function handleMobileChange(e){
     isMobile = e.matches;
