@@ -416,10 +416,13 @@
       and hands-on backend and ML project work. Focused on building practical, scalable solutions.
     </p>
     <div class="contact-links">
-      <a class="email-link" href="mailto:mohammedafaaz433@gmail.com"><i class="fa-solid fa-envelope"></i> <span class="label">email</span>, connect or contact me here!</a>
-      <a class="github-link" href="https://github.com/mohammedafaaz" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i><span class="label">github</span>, check out my projects and repositories!</a>
-      <a class="resume-btn" href="Afaaz_Resume.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i><span class="label">resume</span>
-      </a>
+      <div>
+        Contact me <a class="email-link" href="mailto:mohammedafaaz433@gmail.com"><i class="fa-solid fa-envelope"></i> <span class="label">email</span></a> |
+        look at my repos on <a class="github-link" href="https://github.com/mohammedafaaz" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> <span class="label">GitHub</span></a>
+      </div>
+      <div>
+        Check out my  <a class="resume-btn" href="Afaaz_Resume.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i> <span class="label">resume</span></a>
+      </div>
     </div>
   </section>
 
@@ -439,38 +442,20 @@
     <div class="work-list">
 
       <div class="card">
-        <div class="skillrow"><div class="k">EV Charging Slot Management System</div><div class="k">Jun 2026</div></div>
-        <div class="card-desc">Python application simulating EV charging slot allocation with a Greedy Algorithm — lowest-battery-priority allocation and a waiting queue for occupied slots.</div>
-        <div class="card-foot">
-          <div class="stacktags"><span>Python</span><span>Greedy Algorithm</span></div>
-          <a class="gh" href="https://github.com/mohammedafaaz/EV-Charging-Slot-Management-using-Greedy-Algorithm" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="skillrow"><div class="k">Student Registration Form</div><div class="k">Jan 2026</div></div>
-        <div class="card-desc">Desktop registration app built with Java Swing — GUI components, event handling, and input validation.</div>
-        <div class="card-foot">
-          <div class="stacktags"><span>Java</span><span>Swing</span></div>
-          <a class="gh" href="https://github.com/mohammedafaaz" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="skillrow"><div class="k">Hospital Bed Allocation System</div><div class="k">Jan 2026</div></div>
-        <div class="card-desc">Console-based hospital management system using Linked Lists in C for dynamic bed allocation and patient records.</div>
-        <div class="card-foot">
-          <div class="stacktags"><span>C</span><span>Linked Lists</span></div>
-          <a class="gh" href="https://github.com/mohammedafaaz/Hospital_Bed_Allocation_System_Using_Linked_List_with_C.git" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="skillrow"><div class="k">Pothole Detection &amp; Reporting App</div><div class="k">Dec 2025</div></div>
+        <div class="skillrow"><div class="k">Pothole Detection &amp; Reporting App</div><div class="k">June 2026</div></div>
         <div class="card-desc">ML-powered web app using Python and YOLOv8 for real-time pothole detection, severity classification, and GPS tracking. 2nd Runner-Up, SIH &amp; IGNITRON CodeRush 2025.</div>
         <div class="card-foot">
           <div class="stacktags"><span>Python</span><span>YOLOv8</span><span>Flask</span></div>
           <a class="gh" href="https://github.com/mohammedafaaz/AI-Pothole-Detector-and-Reporter-WebApp.git" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="skillrow"><div class="k">Malaria Cell Detection using CNN</div><div class="k">May 2026</div></div>
+        <div class="card-desc">A full-stack web app to classify malaria-infected blood cells using a trained Convolutional Neural Network (CNN), with Grad-CAM visual explanations for infected samples.</div>
+        <div class="card-foot">
+          <div class="stacktags"><span>Python</span><span>CNN</span><span>HTML</span></div>
+          <a class="gh" href="https://github.com/mohammedafaaz/Malaria-Cell-Detection-using-CNN.git" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
         </div>
       </div>
 
@@ -577,6 +562,55 @@
   toggles.forEach(function(btn){
     if(btn) btn.addEventListener('click', function(){ setTheme(!root.classList.contains('dark')); });
   });
+
+  const mobileQuery = window.matchMedia('(max-width: 560px)');
+  let isMobile = mobileQuery.matches;
+
+  function updateProjects(){
+    projectCards.forEach(function(card, index){
+      if (!isMobile) {
+        card.classList.remove('is-hidden', 'is-faded');
+        card.style.removeProperty('--preview-opacity');
+        card.style.removeProperty('--preview-grayscale');
+        return;
+      }
+
+      const shouldHide = index >= 2 && !showingAllProjects;
+      const shouldFade = !showingAllProjects && index === 2;
+      card.classList.toggle('is-hidden', shouldHide);
+      card.classList.toggle('is-faded', shouldFade);
+
+      if(shouldFade){
+        card.style.setProperty('--preview-opacity', '0.8');
+        card.style.setProperty('--preview-grayscale', '0.05');
+      } else {
+        card.style.removeProperty('--preview-opacity');
+        card.style.removeProperty('--preview-grayscale');
+      }
+    });
+
+    if(projectsToggle){
+      if (!isMobile || projectCards.length <= 2) {
+        projectsToggle.style.display = 'none';
+      } else {
+        projectsToggle.style.display = 'inline-flex';
+        projectsToggle.textContent = showingAllProjects ? 'View less' : 'View more';
+        projectsToggle.setAttribute('aria-expanded', String(showingAllProjects));
+      }
+    }
+  }
+
+  function handleMobileChange(e){
+    isMobile = e.matches;
+    showingAllProjects = false;
+    updateProjects();
+  }
+
+  if (mobileQuery.addEventListener) {
+    mobileQuery.addEventListener('change', handleMobileChange);
+  } else if (mobileQuery.addListener) {
+    mobileQuery.addListener(handleMobileChange);
+  }
 
   if(projectsToggle){
     projectsToggle.addEventListener('click', function(){
