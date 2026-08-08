@@ -91,19 +91,19 @@
   /* ---------- HERO ---------- */
   .kicker{
     font-family:'Montserrat', sans-serif; font-weight:500;
-    font-size:15px; letter-spacing:.16em; text-transform:uppercase;
+    font-size:13px; letter-spacing:.16em; text-transform:uppercase;
     color: var(--accent); margin: 20px 0 22px;
   }
   .hero-head{
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
     flex-wrap: nowrap;
     margin-bottom: 18px;
   }
   .hero-head img{
-    width: 40px;
-    height: 40px;
+    width: 68px;
+    height: 68px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
@@ -137,7 +137,7 @@
   .hero-links{
     display: none;
   }
-  h1.name{ font-size: 60px; line-height:1.12; margin: 0; }
+  h1.name{ font-size: 72px; line-height:1.05; margin: 0; }
   .rule-orn{
     display:flex; align-items:center; gap:10px; width: 120px; margin: 0 0 26px;
   }
@@ -398,9 +398,13 @@
 
   @media (max-width: 640px){
     .hero-head{ align-items:center; gap:10px; flex-wrap:nowrap; }
+    .hero-head img{
+      width: 64px;
+      height: 64px;
+    }
     .hero-head h1{ gap:8px; flex-wrap:nowrap; overflow:hidden; }
     .hero-title-row{ gap:8px; }
-    .hero-name{ font-size: clamp(20px, 4.2vw, 28px); white-space: nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .hero-name{ font-size: clamp(24px, 6.2vw, 38px); white-space: nowrap; overflow:hidden; text-overflow:ellipsis; }
     .resume-btn{ margin-left: 6px; padding: 5px 8px; font-size: 13px; }
     .hero-links{ gap:6px; flex-shrink:0; }
     .hero-links a{ width:22px; height:22px; font-size:10px; }
@@ -437,7 +441,7 @@
     <div class="rule-orn"><span></span><i class="fa-solid fa-circle"></i><span></span></div>
     <p class="bio">
       Hey, I'm a 3rd year AIML engineering student from BITM Ballari, India.<br>
-      <br>Proficient in <em>Python</em> and <em>Java</em>, with a strong foundation in Data Structures &amp; Algorithms
+      <br>Proficient in <em>Java</em> and <em>Python</em>, with a strong foundation in Data Structures &amp; Algorithms
       and hands-on backend and ML project work. Focused on building practical, scalable solutions.
     </p>
     <div class="contact-links">
